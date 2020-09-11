@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class=" container-fluid">
+        <div class="row " style="background-color: white; min-height: 100px; "></div>
+        <div class="row bg-dark " style="box-shadow: 0px -15px 10px 0px; ">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNav " aria-controls="navbarNav " aria-expanded="false " aria-label="Toggle navigation ">
+                    <span class="navbar-toggler-icon "></span>
+                  </button>
+                <div class="collapse navbar-collapse " id="navbarNav ">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item active ">
+                            <a class="nav-link " style="color: white;font-size: 150%; font-family:serif; margin-right: 150%; font-weight: bolder;" (click)="goToHome();">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ">
+                        <li class="nav-item active ">
+                            <a class="nav-link " style="color: white;font-size: 150%; font-family:serif; margin-right: 150%; font-weight: bolder;" (click)="goToLogin();">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row" style="background-image: url(./home.png) ; background-repeat: no-repeat; background-size: cover;">
+            <div style="margin: 10% 40%;">
+                <form method="POST" action="http://localhost:3001/home" id="loginForm" class="form-control  rounded form-group" style="padding:20%;background-color: wheat; width: 200%; box-shadow: 0px 0px 20px 20px #333333;" [formGroup]="logInForm" name="logInForm">
+                    <input class="rounded" name="username" type="text" style="width: 100%;" placeholder="UserName"><br>
+                    <!-- <div style="font-family: serif; font-weight: bolder;" class="text-dark" *ngIf="logInForm.get('mailId').hasError('required') && !logInForm.get('mailId').pristine;">mailId is required</div> -->
+                    <input class="rounded" name="password" type="password" placeholder="Password" style="margin-top: 1rem;" [formControlName]="'passWord'"><br>
+                    <!-- <div style="font-family: serif; font-weight: bolder;" class="text-dark" *ngIf="logInForm.get('passWord').hasError('required') && !logInForm.get('passWord').pristine">password is required</div> -->
+                    <input type="checkbox" class="form-check-input" style="margin-top: 1rem;" id="Check1">
+                    <label class="form-check-label text-justify text-dark" for="Check1" style=" margin-top:0.5rem;font-weight: bolder;font-family: serif;font-size: large; ">Remember me</label>
+                    <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                            <label class="mr-sm-2" style="font-family: serif; font-weight: bolder;">Room</label>
+                            <select class="custom-select mr-sm-2" id="room" name="room">
+                       
+                        <option selected value="Node">Node</option>
+                        <option value="Vue">Vue</option>
+                        <option value="Express">Express</option>
+                        <option value="Angular">Angular</option>
+                      </select>
+                        </div>
+                    </div>
+                    <button type="submit" style="margin-top: 1rem;" id="loginSubmit" class="btn-sm btn-success"> Login</button><br>
+                    <!-- <button type="button" id="register" class="btn-sm btn-success" style="margin-top: 1rem;"> Register</button> -->
+                </form>
+            </div>
+        </div>
+
+        <div class="row bg-dark " style="padding-top: 2%;">
+            <div class="col-8 bg-dark ">
+                <div class="row ">
+                    <div class="col ">
+                        <i style=" margin-left: 55%; " class="fa fa-instagram  " aria-hidden="true "></i>
+                        <i style=" margin-left: 12%; " class="fab fa-facebook " aria-hidden="true "></i>
+                        <i style=" margin-left: 12%; " class="fab fa-twitter-square " aria-hidden="true "></i>
+                        <i style=" margin-left: 12%; " class="fab fa-linkedin " aria-hidden="true "></i>
+                    </div>
+                </div>
+                <br>
+                <h2 class="text-justify " style="color: white; font-family: serif; font-weight: bolder; ">COPYRIGHT © 2020 - DIVEY KHANDELWAL</h2>
+            </div>
+            <div class="col-4 bg-dark ">
+            </div>
+        </div>
+    </div>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.1/qs.min.js" integrity="sha512-B5KPuKhNIyNoR95LjIF4yHlNHK9JA2uPpSGspqxWzL+ghKk/FPtl8JFlqh+51s1d0/0DuGjfMnUURCYG8hUJ/Q==" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5ac72b0d80.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

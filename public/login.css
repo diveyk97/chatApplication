@@ -1,0 +1,16 @@
+i:hover {
+    background-color: rgb(255, 108, 40);
+    border-radius: 25px;
+    transform: scale(2.50);
+}
+
+.nav-item:hover {
+    background-color: red;
+    transform: scale(1.200);
+    border-radius: 25px;
+}
+
+
+/* form:hover {
+    transform: scale(1.1);
+} */
