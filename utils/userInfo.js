@@ -84,30 +84,35 @@ function removeUser(socket, io) {
                 if (err) {
                     console.log("error finding collection from userinfo")
                 } else {
-                    coll.findOneAndDelete({ id: id }, (err, result) => {
-                        if (err) console.log("error while deleting");
-                        else {
-                            var temp = result.value;
-                            console.log(temp);
-                            var obj = { username: temp.username, message: "has left the room", roomName: temp.roomName };
-                            socket.to(temp.roomName).broadcast.emit("modifyUserJoinMessage", obj);
-                            messageObj.postMessage(obj);
-                            //  socket.to(obj.roomName).broadcast.emit("modifyUserJoinMessage", obj);
-                            getAllUsers(obj.roomName, (p1) => {
-                                if (p1.length == 0) {
-                                    console.log("no users");
-                                } else {
-                                    if (p1[0].error) {
-                                        console.log(p1[0].error);
-                                    } else {
-                                        var userArr = p1.map(item => item);
-                                        io.to(obj.roomName).emit("DisplayAllUsers", userArr);
-                                    }
-                                }
-                            });
 
+                    coll.findOne({id:id},(err,res1) => {
+                        if (err) console.log(err) ;
+                        else {
+                            // console.log(res1);
+                            var temp = res1 ;
+                            // console.log(temp);
+                            var obj = { username: temp.username, message: "has left the room", roomName: temp.roomName };
+                            coll.findOneAndDelete({id:id}, (err,result)=>{
+                                if (err) console.log(err) ;
+                                else {
+                                    socket.to(temp.roomName).broadcast.emit("modifyUserJoinMessage", obj);
+                                    messageObj.postMessage(obj);
+                                    getAllUsers(obj.roomName, (p1) => {
+                                        if (p1.length == 0) {
+                                            console.log("no users");
+                                        } else {
+                                            if (p1[0].error) {
+                                                console.log(p1[0].error);
+                                            } else {
+                                                var userArr = p1.map(item => item);
+                                                io.to(obj.roomName).emit("DisplayAllUsers", userArr);
+                                            }
+                                        }
+                                    });
+                                }
+                            })
                         }
-                    })
+                    }) ;
                 }
             });
         }

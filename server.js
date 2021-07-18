@@ -35,7 +35,9 @@ app.get("/chat", (req, res) => {
 })
 
 io.on("connection", (socket) => {
+
     socket.on("joinRoom", function(data) {
+        socket.broadcast.emit(data.username + "has joined the room" + data.roomName) ;
         socket.join(data.roomName);
         //   console.log(data);
         var obj = { username: data.username, message: "has joined", roomName: data.roomName };
@@ -51,6 +53,7 @@ io.on("connection", (socket) => {
         //  console.log(socket.id);
         //   if (tempUser) {
         // var obj = { username: tempUser.username, message: "has left the room", roomName: tempUser.roomName };
+        // socket.broadcast.emit(data.username + "has left the room" + data.roomName) ;
         userObj.removeUser(socket, io);
         // io.emit("DisplayAllUsers", (userObj.getAllUsers()));
         //  socket.to(tempUser.roomName).broadcast.emit("modifyUserJoinMessage", obj);
